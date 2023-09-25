@@ -1,0 +1,56 @@
+﻿@model IEnumerable<Esarkar.Models.RequestModel>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Email)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Phone)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Document)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Reason)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Email)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Phone)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Document)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Reason)
+            </td>
+            <td>
+                    <button class="btn btn-success text-white"><a asp-action="Edit" asp-route-id="@item.RequestId" class="text-white">Edit</a> </button>
+                    <button class="btn btn-primary text-white"> <a asp-action="Details" asp-route-id="@item.RequestId" class="text-white">Details</a> </button>
+                    
+                    <button class="btn btn-danger"><a asp-action="Delete" asp-route-id="@item.RequestId" class="text-white">Delete</a></button>
+
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
